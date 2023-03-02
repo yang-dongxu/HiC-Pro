@@ -1,3 +1,10 @@
+Fork target:
+ability to restore process when broken down
+plan:
+- modify bin/HiC-Pro script, 
+- - choose overwrite or continue
+- - split mapping step to mapping_global, mapping_local, mapping_merge and mapping_stat
+
 
 # HiC-Pro
 
