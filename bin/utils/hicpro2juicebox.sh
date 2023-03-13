@@ -29,7 +29,7 @@ function help {
     echo "   -j|--jar JUICERJAR : path to juicebox_clt.jar file"
     echo "   [-r|--resfrag] RESFRAG : restriction fragment file used by HiC-Pro"
     echo "   [-t|--temp] TEMP : path to tmp folder. Default is current path"
-    echo "   [-o|--out] OUT : output path. Default is current path"
+    echo "   [-o|--out] OUT : output path. Default is current path. if end with .hic, treated as output name but not path"
     echo "   [-h|--help]: help"
     exit;
 }
@@ -142,7 +142,11 @@ else
 fi
 
 echo -e "Running Juicebox ..."
-OUTPUTFILE=${OUT}/$(basename $VALIDPAIRS).hic
+if [[ $OUT == *.hic ]];then
+    OUTPUTFILE=$OUT
+else
+    OUTPUTFILE=${OUT}/$(basename $VALIDPAIRS).hic
+fi;
 
 ## This is the command to generate the hic file that can be visualized with Juicebox with restriction fragment information
 
